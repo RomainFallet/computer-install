@@ -1,0 +1,25 @@
+{
+  "name": "computer-install",
+  "version": "1.0.0",
+  "repository": "git@github.com:RomainFallet/computer-install.git",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "~4.2.5",
+    "lint-staged": "~10.2.9",
+    "shellcheck": "~0.4.4"
+  },
+  "scripts": {
+    "lint": "shellcheck ./*.sh"
+  },
+  "lint-staged": {
+    "./*.sh": [
+      "shellcheck"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {}
+}
