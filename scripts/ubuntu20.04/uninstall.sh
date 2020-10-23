@@ -23,6 +23,12 @@ then
   echo 'y' | sh ~/.oh-my-zsh/tools/uninstall.sh
 fi
 
+# Set default shell to bash
+if ! grep "^${USER}" /etc/passwd | grep '/bin/bash'
+then
+  chsh -s /bin/bash
+fi
+
 # Zsh
 if dpkg --get-selections | grep 'zsh'
 then

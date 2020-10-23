@@ -1,28 +1,10 @@
-#!/bin/bash
+#!/bin/bashz
 
 # Exit on error
 set -e
 
 # Update packages list
 sudo apt update
-
-###########################
-# Remove existing apps
-###########################
-
-# Firefox
-if dpkg --get-selections | grep 'firefox'
-then
-  sudo apt autoremove --purge -y firefox firefox-locale-en firefox-locale-fr
-fi
-if test -d ~/.mozilla
-then
-  sudo rm -rf ~/.mozilla
-fi
-if test -d ~/.cache/mozilla
-then
-  sudo rm -rf ~/.cache/mozilla
-fi
 
 ###########################
 # Prerequisites
@@ -42,6 +24,12 @@ fi
 if ! dpkg --get-selections | grep 'zsh'
 then
   sudo apt install -y zsh
+fi
+
+# Set default shell to zsh
+if ! grep "^${USER}" /etc/passwd | grep '/bin/zsh'
+then
+  chsh -s /bin/zsh
 fi
 
 # Oh My Zsh
