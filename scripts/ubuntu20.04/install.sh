@@ -26,6 +26,12 @@ then
   sudo apt install -y zsh
 fi
 
+# Set default shell to zsh
+if ! grep "^${USER}" /etc/passwd | grep '/bin/zsh'
+then
+  chsh -s /bin/zsh
+fi
+
 # Oh My Zsh
 if ! test -d ~/.oh-my-zsh
 then
