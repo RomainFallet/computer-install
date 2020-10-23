@@ -12,6 +12,10 @@ if dpkg --get-selections | grep 'git'
 then
   sudo apt autoremove --purge -y 'git'
 fi
+if test -f ~/.gitconfig
+then
+  rm -f ~/.gitconfig
+fi
 
 ###########################
 # Terminal
@@ -21,6 +25,10 @@ fi
 if test -d ~/.oh-my-zsh
 then
   echo 'y' | sh ~/.oh-my-zsh/tools/uninstall.sh
+fi
+if test -f ~/.shell.pre-oh-my-zsh
+then
+  rm -f ~/.shell.pre-oh-my-zsh
 fi
 
 # Set default shell to bash
