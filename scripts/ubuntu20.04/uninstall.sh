@@ -251,14 +251,14 @@ if sudo snap list | grep 'docker'
 then
   sudo snap remove --purge 'docker'
 fi
-if groups "$USER" | grep 'docker'
-then
-  sudo gpasswd -d "$USER" docker
-fi
-if less /etc/group | grep 'docker'
-then
-  sudo groupdel 'docker'
-fi
+#if groups "$USER" | grep 'docker'
+#then
+#  sudo gpasswd -d "$USER" docker
+#fi
+#if less /etc/group | grep 'docker'
+#then
+#  sudo groupdel 'docker'
+#fi
 
 ###########################
 # Database viewers

@@ -1,28 +1,10 @@
-#!/bin/bash
+#!/bin/bashz
 
 # Exit on error
 set -e
 
 # Update packages list
 sudo apt update
-
-###########################
-# Remove existing apps
-###########################
-
-# Firefox
-if dpkg --get-selections | grep 'firefox'
-then
-  sudo apt autoremove --purge -y firefox firefox-locale-en firefox-locale-fr
-fi
-if test -d ~/.mozilla
-then
-  sudo rm -rf ~/.mozilla
-fi
-if test -d ~/.cache/mozilla
-then
-  sudo rm -rf ~/.cache/mozilla
-fi
 
 ###########################
 # Prerequisites
