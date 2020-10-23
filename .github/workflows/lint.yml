@@ -1,4 +1,4 @@
-name: Lint
+name: Lint project
 
 on:
   push:
@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run a one-line script
+      - name: Start lint script
         run: npm run lint
