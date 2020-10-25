@@ -1,20 +1,10 @@
-#!/bin/bashz
+#!/bin/bash
 
 # Exit on error
 set -e
 
 # Update packages list
 sudo apt update
-
-###########################
-# Prerequisites
-###########################
-
-# Git
-if ! dpkg --get-selections | grep 'git'
-then
-  sudo apt install -y git
-fi
 
 ###########################
 # Terminal
@@ -231,23 +221,7 @@ fi
 ###########################
 
 # Node
-nodejsaliasconfig='alias node="docker run -it --rm -v $(pwd):/tmp -w /tmp bitnami/node:12 node"'
-if ! grep "${nodejsaliasconfig}" ~/.zshrc
+if ! sudo snap list | grep 'node'
 then
-  echo "${nodejsaliasconfig}" | tee -a ~/.zshrc > /dev/null
+  sudo snap install 'node' --classic
 fi
-
-# NPM
-npmaliasconfig='alias npm="docker run -it --rm -v $(pwd):/tmp -w /tmp bitnami/node:12 npm"'
-if ! grep "${npmaliasconfig}" ~/.zshrc
-then
-  echo "${npmaliasconfig}" | tee -a ~/.zshrc > /dev/null
-fi
-
-# Yarn
-yarnaliasconfig='alias yarn="docker run -it --rm -v $(pwd):/tmp -w /tmp bitnami/node:12 yarn"'
-if ! grep "${yarnaliasconfig}" ~/.zshrc
-then
-  echo "${yarnaliasconfig}" | tee -a ~/.zshrc > /dev/null
-fi
-

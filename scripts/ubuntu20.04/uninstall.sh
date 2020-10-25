@@ -289,3 +289,13 @@ if sudo snap list | grep 'robo3t-snap'
 then
   sudo snap remove --purge 'robo3t-snap'
 fi
+
+###########################
+# Code programs
+###########################
+
+# Node
+if sudo snap list | grep 'node'
+then
+  sudo snap remove --purge 'node'
+fi
