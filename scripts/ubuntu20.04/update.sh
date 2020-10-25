@@ -10,7 +10,7 @@ sudo apt update
 # Apt updates
 ###########################
 
-sudo apt upgrade -y
+sudo apt upgrade --autoremove -y
 
 ###########################
 # Snap updates
