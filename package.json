@@ -9,10 +9,10 @@
     "shellcheck": "~0.4.4"
   },
   "scripts": {
-    "lint": "shellcheck ./*.sh"
+    "lint": "shellcheck ./scripts/**/*.sh"
   },
   "lint-staged": {
-    "./*.sh": [
+    "./scripts/**/*.sh": [
       "shellcheck"
     ]
   },
