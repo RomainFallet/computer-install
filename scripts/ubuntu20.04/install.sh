@@ -167,9 +167,18 @@ fi
 ###########################
 
 # VS Code
-if ! sudo snap list | grep 'code'
+if ! sudo apt-key list | grep 'microsoft'
 then
-  sudo snap install 'code' --classic
+  wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+fi
+if ! ls -l /etc/apt/sources.list.d/vscode* 2>/dev/null
+then
+  echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+  sudo apt update
+fi
+if ! dpkg --get-selections | grep "^code$"
+then
+  sudo apt install -y 'code'
 fi
 
 ###########################

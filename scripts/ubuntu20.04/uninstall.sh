@@ -56,12 +56,14 @@ fi
 ###########################
 
 # Chromium
+killall -q chrome
 if sudo snap list | grep 'chromium'
 then
   sudo snap remove --purge 'chromium'
 fi
 
 # Firefox
+killall -q firefox-bin
 if sudo snap list | grep 'firefox'
 then
   sudo snap remove --purge 'firefox'
@@ -76,6 +78,7 @@ fi
 ###########################
 
 # Thunderbird
+killall -q thunderbird-bin
 if sudo snap list | grep 'thunderbird'
 then
   sudo snap remove --purge 'thunderbird'
@@ -90,6 +93,7 @@ fi
 ###########################
 
 # Bitwarden
+killall -q bitwarden
 if sudo snap list | grep 'bitwarden'
 then
   sudo snap remove --purge 'bitwarden'
@@ -100,12 +104,14 @@ fi
 ###########################
 
 # LibreOffce
+killall -q soffice.bin
 if sudo snap list | grep 'libreoffice'
 then
   sudo snap remove --purge 'libreoffice'
 fi
 
 # Scribus
+killall -q scribus
 if ls -l /etc/apt/sources.list.d/scribus-ubuntu-ppa* 2> /dev/null
 then
   sudo rm -f /etc/apt/sources.list.d/scribus-ubuntu-ppa*
@@ -125,6 +131,7 @@ fi
 ###########################
 
 # PDF Sudio
+killall -q java
 if test -f ~/PDFStudio_linux64.sh
 then
   rm -f ~/PDFStudio_linux64.sh
@@ -148,6 +155,7 @@ fi
 
 
 # VLC
+killall -q vlc
 if sudo snap list | grep 'vlc'
 then
   sudo snap remove --purge 'vlc'
@@ -158,12 +166,14 @@ fi
 ###########################
 
 # Krita
+killall krita
 if sudo snap list | grep 'krita'
 then
   sudo snap remove --purge 'krita'
 fi
 
 # Inkscape
+killall inkscape
 if sudo snap list | grep 'inkscape'
 then
   sudo snap remove --purge 'inkscape'
@@ -179,6 +189,7 @@ fi
 ###########################
 
 # OpenShot Video Editor
+killall -q openshot-qt
 if ls -l /etc/apt/sources.list.d/openshot_developers-ubuntu-ppa* 2> /dev/null
 then
   sudo rm -f /etc/apt/sources.list.d/openshot_developers-ubuntu-ppa*
@@ -193,6 +204,7 @@ then
 fi
 
 # Handbrake
+killall ghb
 if ls -l /etc/apt/sources.list.d/stebbins-ubuntu-handbrake-releases* 2> /dev/null
 then
   sudo rm -f /etc/apt/sources.list.d/stebbins-ubuntu-handbrake-releases*
@@ -211,6 +223,7 @@ fi
 ###########################
 
 # OBS Studio
+killall -q obs
 if ls -l /etc/apt/sources.list.d/obsproject-ubuntu-obs-studio* 2> /dev/null
 then
   sudo rm -f /etc/apt/sources.list.d/obsproject-ubuntu-obs-studio*
@@ -229,9 +242,22 @@ fi
 ###########################
 
 # VS Code
-if sudo snap list | grep 'code'
+sudo pkill code
+if ls -l /etc/apt/sources.list.d/vscode* 2> /dev/null
 then
-  sudo snap remove --purge 'code'
+  sudo rm -f /etc/apt/sources.list.d/vscode*
+fi
+if dpkg --get-selections | grep "^code$"
+then
+  sudo apt autoremove --purge -y 'code'
+fi
+if dpkg --get-selections | grep "^code$"
+then
+  sudo apt autoremove --purge -y 'code'
+fi
+if dpkg --get-selections | grep 'fonts-firacode'
+then
+  sudo apt autoremove --purge -y fonts-firacode
 fi
 if test -d ~/.vscode
 then
@@ -241,12 +267,17 @@ if test -d ~/.config/Code
 then
   rm -rf ~/.config/Code
 fi
+if test -d /usr/share/code
+then
+  sudo rm -rf /usr/share/code
+fi
 
 ###########################
 # FTP/SFTP client
 ###########################
 
 # Filezilla
+killall -q filezilla
 if dpkg --get-selections | grep 'filezilla'
 then
   sudo apt autoremove --purge -y 'filezilla'
@@ -261,6 +292,7 @@ fi
 ###########################
 
 # Docker
+sudo pkill docker
 if sudo snap list | grep 'docker'
 then
   sudo snap remove --purge 'docker'
@@ -279,6 +311,7 @@ fi
 ###########################
 
 # DBeaver
+killall -q java
 if sudo snap list | grep 'dbeaver-ce'
 then
   sudo snap remove --purge 'dbeaver-ce'
