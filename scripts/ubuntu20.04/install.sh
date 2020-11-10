@@ -92,7 +92,7 @@ fi
 # PDF Sudio
 if ! test -f ~/PDFStudio_linux64.sh
 then
-  wget --no-cache -O ~/PDFStudio_linux64.sh https://download.qoppa.com/pdfstudio/PDFStudio_linux64.sh
+  wget --no-cache -O ~/PDFStudio_linux64.sh https://download.qoppa.com/pdfstudio/v2019/PDFStudio_v2019_2_3_linux64.sh
 fi
 if ! ls -l ~/pdfstudio* 2> /dev/null
 then
