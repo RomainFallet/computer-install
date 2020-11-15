@@ -7,28 +7,6 @@ set -e
 sudo apt update
 
 ###########################
-# Terminal
-###########################
-
-# Zsh
-if ! dpkg --get-selections | grep 'zsh'
-then
-  sudo apt install -y zsh
-fi
-
-# Set default shell to zsh
-if ! grep "^${USER}" /etc/passwd | grep '/bin/zsh'
-then
-  chsh -s /bin/zsh
-fi
-
-# Oh My Zsh
-if ! test -d ~/.oh-my-zsh
-then
-  sh -c "$(wget --no-cache -O- https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-
-###########################
 # Browsers
 ###########################
 
@@ -238,3 +216,26 @@ if ! sudo snap list | grep 'node'
 then
   sudo snap install 'node' --classic
 fi
+
+###########################
+# Terminal
+###########################
+
+# Zsh
+if ! dpkg --get-selections | grep 'zsh'
+then
+  sudo apt install -y zsh
+fi
+
+# Set default shell to zsh
+if ! grep "^${USER}" /etc/passwd | grep '/bin/zsh'
+then
+  chsh -s /bin/zsh
+fi
+
+# Oh My Zsh
+if ! test -d ~/.oh-my-zsh
+then
+  sh -c "$(wget --no-cache -O- https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
