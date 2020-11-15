@@ -39,9 +39,9 @@ then
 fi
 
 # Firefox
-if ! sudo snap list | grep 'firefox'
+if ! dpkg --get-selections | grep 'firefox'
 then
-  sudo snap install 'firefox'
+  sudo apt install -y 'firefox'
 fi
 
 ###########################
@@ -49,9 +49,13 @@ fi
 ###########################
 
 # Thunderbird
-if ! sudo snap list | grep 'thunderbird'
+if ! ls -l /etc/apt/sources.list.d/ubuntu-mozilla-security-ubuntu-ppa* 2> /dev/null
 then
-  sudo snap install 'thunderbird'
+  sudo add-apt-repository -y ppa:ubuntu-mozilla-security/ppa
+fi
+if ! dpkg --get-selections | grep 'thunderbird'
+then
+  sudo apt install -y 'thunderbird'
 fi
 
 ###########################

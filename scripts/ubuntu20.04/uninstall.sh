@@ -63,14 +63,14 @@ then
 fi
 
 # Firefox
-killall -q firefox-bin
-if sudo snap list | grep 'firefox'
+killall -q firefox
+if dpkg --get-selections | grep 'firefox'
 then
-  sudo snap remove --purge 'firefox'
+  sudo apt autoremove --purge  'firefox'
 fi
-if test -d ~/Téléchargements/firefox.tmp
+if test -d ~/.mozilla
 then
-  rm -rf ~/Téléchargements/firefox.tmp
+  rm -rf ~/.mozilla
 fi
 
 ###########################
@@ -78,14 +78,18 @@ fi
 ###########################
 
 # Thunderbird
-killall -q thunderbird-bin
-if sudo snap list | grep 'thunderbird'
+killall -q thunderbird
+if ls -l /etc/apt/sources.list.d/ubuntu-mozilla-daily-ubuntu-ppa* 2> /dev/null
 then
-  sudo snap remove --purge 'thunderbird'
+  sudo rm -f /etc/apt/sources.list.d/ubuntu-mozilla-daily-ubuntu-ppa*
 fi
-if test -d ~/Téléchargements/thunderbird.tmp
+if dpkg --get-selections | grep 'thunderbird'
 then
-  rm -rf ~/Téléchargements/thunderbird.tmp
+  sudo apt autoremove --purge 'thunderbird'
+fi
+if test -d ~/.thunderbird
+then
+  rm -rf ~/.thunderbird
 fi
 
 ###########################
