@@ -385,6 +385,13 @@ then
 fi
 
 ###########################
+# OS settings
+###########################
+
+# Favorite apps
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'snap-store_ubuntu-software.desktop']"
+
+###########################
 # Miscellaneous
 ###########################
 
