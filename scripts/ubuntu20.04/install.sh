@@ -47,6 +47,26 @@ then
 fi
 
 ###########################
+# VPN
+###########################
+
+# ProtonVPN
+if ! sudo apt-key list | grep 'Proton'
+then
+  wget -q -O - https://repo.protonvpn.com/debian/public_key.asc | sudo apt-key add -
+fi
+if ! grep 'protonvpn' /etc/apt/sources.list
+then
+  sudo add-apt-repository 'deb https://repo.protonvpn.com/debian unstable main'
+  sudo apt update
+fi
+if ! dpkg --get-selections | grep 'protonvpn'
+then
+  sudo apt install -y 'protonvpn'
+  protonvpn-cli ks --always-on
+fi
+
+###########################
 # Document publishing
 ###########################
 

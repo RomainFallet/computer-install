@@ -68,6 +68,34 @@ then
 fi
 
 ###########################
+# VPN
+###########################
+
+# ProtonVPN
+if protonvpn-cli -v
+then
+  protonvpn-cli ks --off
+fi
+if grep 'protonvpn' /etc/apt/sources.list
+then
+  sudo sed -i'.tmp' '/deb https:\/\/repo.protonvpn.com\/debian unstable main/d' /etc/apt/sources.list
+  sudo sed -i'.tmp' '/# deb-src https:\/\/repo.protonvpn.com\/debian unstable main/d' /etc/apt/sources.list
+  sudo rm -f /etc/apt/sources.list.tmp
+fi
+if dpkg --get-selections | grep 'protonvpn'
+then
+  sudo apt autoremove --purge -y 'protonvpn'
+fi
+if test -d ~/.cache/protonvpn
+then
+  rm -rf ~/.cache/protonvpn
+fi
+if test -d ~/.config/protonvpn
+then
+  rm -rf ~/.config/protonvpn
+fi
+
+###########################
 # Document publishing
 ###########################
 
