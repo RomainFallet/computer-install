@@ -95,6 +95,21 @@ then
   rm -rf ~/.config/protonvpn
 fi
 
+# NextDNS
+if nextdns version
+then
+  sudo nextdns stop
+  sudo nextdns deactivate
+fi
+if test -f /etc/apt/sources.list.d/nextdns.list
+then
+  sudo rm /etc/apt/sources.list.d/nextdns.list
+fi
+if dpkg --get-selections | grep 'nextdns'
+then
+  sudo apt autoremove --purge -y 'nextdns'
+fi
+
 ###########################
 # Document publishing
 ###########################

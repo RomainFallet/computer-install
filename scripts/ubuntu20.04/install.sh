@@ -47,7 +47,7 @@ then
 fi
 
 ###########################
-# VPN
+# VPN & DNS
 ###########################
 
 # ProtonVPN
@@ -63,7 +63,21 @@ fi
 if ! dpkg --get-selections | grep 'protonvpn'
 then
   sudo apt install -y 'protonvpn'
-  protonvpn-cli ks --always-on
+fi
+
+# NextDNS
+if ! sudo apt-key list | grep 'Bintray'
+then
+  wget -qO - https://nextdns.io/repo.gpg | sudo apt-key add -
+fi
+if ! test -f /etc/apt/sources.list.d/nextdns.list
+then
+  echo "deb https://nextdns.io/repo/deb stable main" | sudo tee /etc/apt/sources.list.d/nextdns.list
+  sudo apt update
+fi
+if ! dpkg --get-selections | grep 'nextdns'
+then
+  sudo apt install -y 'nextdns'
 fi
 
 ###########################
